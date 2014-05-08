@@ -17,8 +17,8 @@ Till now ,it extracts from two online marketting websites - amazon and flipkart 
 #Installation/Usage
 
 - Fork and clone the repository.
-- Move the files `extract.py` and 'webpage_xpath' to your app directory .
-- Pass the function 'extract(url)' to get the data and use as per your wish.
+- Move the files `extract.py` and `webpage_xpath` to your app directory .
+- Pass the function `extract(url)` to get the data and use as per your wish.
 - For extracting more data from other websites , just add the xpaths in webpage_xpath.csv .
 
 #License
