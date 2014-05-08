@@ -1,0 +1,3 @@
+website,xpath1,xpath2,xpath3
+flipkart,"//h1[@itemprop=""name""]","//span[@class=""fk-font-verybig pprice fk-bold""]","//div[@class=""image-wrapper""]/img/@src"
+amazon,"//span[@id=""productTitle""]","//span[@id=""priceblock_ourprice""]","//div[@class=""imgTagWrapper""]/img/@src"
