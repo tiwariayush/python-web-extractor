@@ -1,3 +1,5 @@
 website,xpath1,xpath2,xpath3
 flipkart,"//h1[@itemprop=""name""]","//span[@class=""fk-font-verybig pprice fk-bold""]","//div[@class=""image-wrapper""]/img/@src"
 amazon,"//span[@id=""productTitle""]","//span[@id=""priceblock_ourprice""]","//div[@class=""imgTagWrapper""]/img/@src"
+jabong,"//span[@id=""qa-prd-brand""]","//span[@itemprop=""price""]","//li[@data-js-function=""setImage""]/img/@src"
+myntra,"//h1[@class=""title""]","//div[@class=""price""]","//div[@class=""blowup""]"/img/@src"
