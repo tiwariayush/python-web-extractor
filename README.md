@@ -13,6 +13,7 @@ Till now ,it extracts from two online marketting websites - amazon and flipkart 
 - Python
 - Webscraping(http://docs.webscraping.com/index.html)
 - csv
+- For webkit_extractor , you need to install PyQt4 `sudo apt-get install python-pyqt4`
 
 #Installation/Usage
 
