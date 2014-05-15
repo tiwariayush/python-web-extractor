@@ -4,56 +4,60 @@
 import sys
 import os
 import csv
-from urlparse import urlparse
+import re
 
-try:                                                                                 #Checking for odule import exceptions
-  from webscraping import download , xpath 
+try:                                                           #Checking for module import exceptions
+  from webscraping import download , xpath ,webkit
 except ImportError: 
   print('No webscraping module found , try installing it ') 
   sys.exit()
 
 def extract(url):
   '''
-  Function that extracts product info from websites listed in the csv page . It takes the url as an argument.
+  Function that extracts product info from websites
+  listed in the csv page . It takes the url as an argument.
   '''
   try:
       url = url.encode('utf-8')
+        
       D = download.Download()
 
       try: 
-       f = open(os.path.join(os.path.dirname(__file__),'webpage_xpath.csv'), 'rb')  #Joining absolute path so that the function can be used inside an app
-      except IOError:                                                               # Checking for Input Output exceptions, i.e if the file exists or not
+       xpath_input_file = open(os.path.join(os.path.dirname(__file__),'webpage_xpath.csv'), 'rb')  
+                                                               #Joining absolute path so that the function can be used inside an app
+      except IOError:                                          # Checking for Input Output exceptions, i.e if the file exists or not
        print('An error occured while reading the csv file, check your Directory again')
        sys.exit()
    
-      reader = csv.reader(f)
+      reader = csv.reader(xpath_input_file)
       row = list(reader)
-      item ={}
-      for r in range(0,5):
-        if url.find(row[r][0])>=0:
+      item_info ={}
+      for r in range(0,len(row)):
+        if url.find(row[r][0])>=0 and url.find(row[r][4])>=0:  #Checks if the url fiven is correct or not 
+                                                               #Fails in the case the url is of given site but not a prduct url 
           xpath1 = row[r][1]
           xpath2 = row[r][2]
           xpath3 = row[r][3]  
 
           html = D.get(url)
       
-          item['name'] = xpath.get(html,'%s//text()' % xpath1)
-          item['price'] = xpath.get(html,'%s//text()' % xpath2)
-          item['image'] = xpath.get(html, '%s' % xpath3)
-          return item
-          sys.exit()
+          item_info['name'] = xpath.get(html,'%s//text()' % xpath1).strip()
+          item_info['price'] = xpath.get(html,'%s//text()' % xpath2)
+          item_info['image'] = xpath.get(html, '%s' % xpath3).strip()
+          return item_info
 
         else:
           continue
   
-      if item == {}: 
-        print "Invalid url given"
+      if item_info == {}:
+        raise NameError('Invalid URL given')
         sys.exit()
 
+      xpath_input_file.close()
       sys.exit()
 
-  except KeyboardInterrupt:                                                         #Prints Goodbye in case of keyboard interruption     
-    print ('Goodbye')
+  except KeyboardInterrupt:     
+    print ('Goodbye')                                                       
     sys.exit()
 
 if __name__ == '__main__':

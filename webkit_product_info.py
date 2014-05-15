@@ -12,14 +12,12 @@ class Render(QWebPage):
     QWebPage.__init__(self)  
     self.loadFinished.connect(self._loadFinished)  
     self.mainFrame().load(QUrl(url))  
-    self.app.exec_()  
+    self.app.exec_() 
 
   def _loadFinished(self, result):  
     self.frame = self.mainFrame()  
-    self.app.quit()  
-  
-def extract(url):
-
+    self.app.quit()
+    
    r = Render(url)
    html = r.frame.toHtml()
   
@@ -32,8 +30,8 @@ def extract(url):
    reader = csv.reader(f)
    row = list(reader)
    item ={}
-   for r in range(0,5):
-     if url.find(row[r][0])>=0:
+   for r in range(0,len(row)):
+     if url.find(row[r][0])>=0 and url.find(row[r][4])>=0:
         xpath1 = row[r][1]
         xpath2 = row[r][2]
         xpath3 = row[r][3]  
