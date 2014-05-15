@@ -8,9 +8,9 @@ It contains 2 main scripts , namely `extract.py` and `webkit_product_info.py`
 The 1st one provides data with cache which can be used later .
 
 To get the product info , just give a call to the fuction in the module.For example - 
-    from extract import *
-    info = extract('http://www.flipkart.com/wills-lifestyle-men-s-printed-casual-shirt/p/itmduesu6zf6hrzn?pid=SHTDUESURJDHFWVB&srno=b_3&ref=dce83d46-bb86-4fd3-8000-140be7fc60d5')
-    print info
+     `from extract import *`
+     `info = extract('http://www.flipkart.com/wills-lifestyle-men-s-printed-casual-shirt/p/itmduesu6zf6hrzn?pid=SHTDUESURJDHFWVB&srno=b_3&ref=dce83d46-bb86-4fd3-8000-140be7fc60d5')`
+     `print info`
 
 or use the info as per your wish .
 
